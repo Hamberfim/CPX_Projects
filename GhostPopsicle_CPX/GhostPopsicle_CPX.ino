@@ -3,9 +3,9 @@
 // 2. https://youtu.be/SrUlv1ExcWY
 // 3. https://youtu.be/bwHrBlprIro
 
-// Author of revisions & refactoring - Hamberfim
+// Author: Hamberfim
 
-// Libraries
+// Libraries to include
 #include <Adafruit_CircuitPlayground.h>  // searches default library location
 
 void setup() {
@@ -27,12 +27,13 @@ void loop() {
 }
 
 void readSensorValues() {
-  byte delayTime = 100;
+  byte delayTime = 250;
+  byte soundPressureLimit = 25;
 
   Serial.print("Light: ");
   Serial.print(CircuitPlayground.lightSensor());
   Serial.print(" | Sound: ");
-  Serial.print(CircuitPlayground.mic.soundPressureLevel(25));
+  Serial.print(CircuitPlayground.mic.soundPressureLevel(soundPressureLimit));
   Serial.print(" | xTilt: ");
   Serial.print(CircuitPlayground.motionX());
   Serial.print(" | yTilt: ");
@@ -42,7 +43,7 @@ void readSensorValues() {
   Serial.print(" | Temperature: ");
   Serial.println(CircuitPlayground.temperatureF());
 
-  delay(delayTime * 50);
+  delay(delayTime);
 }
 
 void readLtTpValues() {
@@ -78,20 +79,22 @@ void readLtTpValues() {
 }
 
 void fadeInRed() {
-  byte delayTime = 10;
+  byte runningTime = 10;
+  byte gapTime = 125;
   for (byte i = 0; i <= 255; i++) {
     lightAllPixels(i, 0, 0);
-    delay(delayTime);
+    delay(runningTime);
   }
-  delay(delayTime * 12.5);
+  delay(gapTime);
 }
 
 void cyclePixelsRGB(int delayTime) {
-  lightAllPixels(255, 0, 0);  // function to light up all 9 neopixels
+  byte highValue = 255;
+  lightAllPixels(highValue, 0, 0);  // function to light up all 9 neopixels
   delay(delayTime);
-  lightAllPixels(0, 255, 0);  // function to light up all 9 neopixels
+  lightAllPixels(0, highValue, 0);  // function to light up all 9 neopixels
   delay(delayTime);
-  lightAllPixels(0, 0, 255);  // function to light up all 9 neopixels
+  lightAllPixels(0, 0, highValue);  // function to light up all 9 neopixels
   delay(delayTime);
 }
 
@@ -103,9 +106,9 @@ void lightAllPixels(byte red, byte green, byte blue) {
 }
 
 void blinkLed() {
-  int delayValue = 250;  // time in miliseconds
-  CircuitPlayground.redLED(true);
+  byte delayValue = 250;  // time in miliseconds
+  CircuitPlayground.redLED(HIGH);
   delay(delayValue);
-  CircuitPlayground.redLED(false);
+  CircuitPlayground.redLED(LOW);
   delay(delayValue);
 }
