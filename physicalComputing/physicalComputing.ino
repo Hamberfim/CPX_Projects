@@ -15,6 +15,8 @@ void setup() {
   // put your setup code here, to run once:
   // init Serial
   Serial.begin(9600);
+  while(!Serial);  // hesitate to make sure serial is started up
+
   // init the CPX and pins/input/output
   CircuitPlayground.begin();
   // All borads have a defined LED_BUILTIN, for CPX it is pin D13
@@ -27,6 +29,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  // ===== digital 8bit values 0-255 ======
+
   // local variables
   const byte delayTime = 50;
   const byte neoPixIndex = 7;
@@ -57,8 +61,6 @@ void loop() {
   }
   lastBtnState = currentBtnState;
 
-// NEXT VIDEO - Analog Programming: https://youtu.be/a6VwfgfSAYQ?list=PLsTszf0qK1ZfgdjqmaZNVwmuH64IZZDa3
-
   // check the switch state
   if (digitalRead(CPLAY_SLIDESWITCHPIN)) {
     // run a neopixel animations
@@ -76,4 +78,5 @@ void loop() {
       }
     }
   }
+
 }
