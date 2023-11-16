@@ -51,23 +51,24 @@ void loop() {
   byte green = 0;
   byte blue = 0;
 
-  if (neopixelNumber >= 0 && neopixelNumber <= 2) {
-    red = 0;
-    green = 0;
-    blue = 30;
-  } else if (neopixelNumber > 2 && neopixelNumber <= 5) {
-    red = 0;
-    green = 30;
-    blue = 0;
-  } else if (neopixelNumber >= 6 && neopixelNumber <= 9) {
-    red = 30;
-    green = 0;
-    blue = 0;
-  }
+  // if (neopixelNumber >= 0 && neopixelNumber <= 2) {
+  //   red = 0;
+  //   green = 0;
+  //   blue = 30;
+  // } else if (neopixelNumber > 2 && neopixelNumber <= 5) {
+  //   red = 0;
+  //   green = 30;
+  //   blue = 0;
+  // } else if (neopixelNumber >= 6 && neopixelNumber <= 9) {
+  //   red = 30;
+  //   green = 0;
+  //   blue = 0;
+  // }
 
   // change color of pixels based on x/y values using a builtin function from the math library
   CircuitPlayground.clearPixels();
-  CircuitPlayground.setPixelColor(neopixelNumber, red, green, blue);
+  // CircuitPlayground.setPixelColor(neopixelNumber, red, green, blue);
+  CircuitPlayground.setPixelColor(neopixelNumber, 55, 0, 0);
   delay(25);
 
   // end of file
