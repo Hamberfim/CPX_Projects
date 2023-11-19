@@ -7,8 +7,8 @@
 * IDE          : Arduino 2.2.1
 * Copyright    : This is my own original work but based on specifications found online
 * Description  : Capacitive touch sensing demo
-*                      Input : ?
-*                      Output: ?  
+*                      Input : Touch pins A1-A7
+*                      Output: a NeoPixel 1-7  
 ***************************************************************/
 // included libraries
 #include <Adafruit_CircuitPlayground.h>
@@ -16,7 +16,7 @@
 
 // global variables
 int threshold = 400;  // this is set based on the readings
-int debounce = 100;   // delay response
+byte debounce = 100;   // delay response
 
 
 void setup() {
